@@ -12,6 +12,9 @@ var bodyParser = require("body-parser");
 // PATH PACKAGE
 var path = require("path");
 
+var dotenv = require('dotenv');
+dotenv.load();
+
 // ========================================
 // STATING MY GLOBAL VARIABLES
 // ========================================
