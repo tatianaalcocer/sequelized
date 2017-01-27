@@ -1,0 +1,22 @@
+{
+  "name": "first_sequelized_project",
+  "version": "1.0.0",
+  "description": "First project",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Icarusoncloud9/sequelized.git"
+  },
+  "keywords": [
+    "sequelized"
+  ],
+  "author": "several authors",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Icarusoncloud9/sequelized/issues"
+  },
+  "homepage": "https://github.com/Icarusoncloud9/sequelized#readme"
+}
