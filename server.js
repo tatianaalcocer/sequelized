@@ -4,16 +4,27 @@
 // ========================================
 
 // EXPRESS JS PACKAGE
-var express = require("express");
-
+var express = require("express");	
 // BODY PARSER PACKAGE
 var bodyParser = require("body-parser");
+var methodOverride = require('method-override');
+require('dotenv').config()
 
-// PATH PACKAGE
+var Sequelize = require('sequelize');
+
+var sequelize = new Sequelize(process.env.JAWSDB_URL,
+{
+  dialect: 'mysql',
+
+  pool: {
+    max: 5,
+    min: 0,
+    idle: 10000
+  }
+
+});// PATH PACKAGE
 var path = require("path");
 
-var dotenv = require('dotenv');
-dotenv.load();
 
 // ========================================
 // STATING MY GLOBAL VARIABLES
@@ -45,8 +56,19 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 // WEB ROUTES
 // ========================================
+app.get('/', function(req, res){
+	res.send('ayo')
+});
 
-
+sequelize
+  .authenticate()
+  .then(function(err) {
+  	if (err) throw err;
+    console.log('Connection has been established successfully.');
+  })
+  .catch(function (err) {
+    console.log('Unable to connect to the database:', err);
+  });
 
 // API ROUTES
 // ========================================
