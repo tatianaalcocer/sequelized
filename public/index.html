@@ -4,7 +4,8 @@
 	<title>To Do List</title>
 	<link rel="stylesheet" href="./assets/css/milligram.min.css">
 	<link rel="stylesheet" href="./assets/css/style.css">
-	<script src="./timertest.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<!-- <script src="./timertest.js"></script> -->
 </head>
 <body>
 <div class="container">
@@ -12,11 +13,83 @@
 
 	<br>
 	<section>
-		<h4 class="center"></h4>
+		<h3><span id="timer-min">25</span>:<span id="timer-sec">00</:span></h3>
+		<br>
+		<button class="center" id="pause">pause</button>
 
 		
 	</section>
 
 </div>
+
+<script>
+	
+//Timer functions
+//=======================
+function timer(secs){
+	var paused = false;
+
+	//25 mins = 60s x 25 = 1500
+	//countdown begins with 1500 seconds
+	var secondsLeft = secs;
+
+	timer = setInterval(decrement, 1000);
+
+	function decrement(){
+		// console.log(secondsLeft);
+		
+		//total number of minutes left in countdown
+		var minutes = Math.floor(secondsLeft/60);
+		//the number of seconds left in each minute
+		var seconds = (secondsLeft % 60);
+
+		//To display seconds in HTML, add a '0' in front of single digits
+		//e.g. if seconds = 34, no change. if seconds = 9, seconds is changed to 09.
+		seconds >= 10 ? seconds : seconds = '0'+seconds;
+
+		$('#timer-min').html(minutes);
+		$('#timer-sec').html(seconds);
+
+		// console.log(minutes);
+		// console.log(seconds);
+		secondsLeft--;
+
+	} //END decrement()
+
+
+	function pauseTimer(){
+		console.log(paused)
+		var min = $('#timer-min').text()
+		var sec = $('#timer-sec').text()
+		// console.log(min);
+		// console.log(sec);
+		clearInterval(timer);
+		paused = true;
+	}
+
+
+	$('#pause').on('click', function(){
+		if (!paused) pauseTimer()
+		else restartTimer();
+	});
+
+	function restartTimer(){
+		console.log(paused)
+		var min = $('#timer-min').text();
+		var sec = $('#timer-sec').text();
+		console.log(min);
+		console.log(sec);
+
+		var secs = Number(min) * 60 + Number(sec);
+		console.log(secs)
+		
+		paused = false;
+	}
+	return false;
+}
+
+timer(1500);
+
+</script>
 </body>
 </html>
