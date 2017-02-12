@@ -16,8 +16,6 @@ var sequelize = new Sequelize(process.env.JAWSDB_URL,
 
 });
 
-
-
 // Exports the connection for other files to use
 module.exports = sequelize;
 
