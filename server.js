@@ -1,87 +1,18 @@
-// I just want to say that han's dog is highly inefficient
-// ========================================
-// STATING MY REQUIRED DEPENDENCIES
-// ========================================
-
-// EXPRESS JS PACKAGE
-var express = require("express");	
-// BODY PARSER PACKAGE
-var bodyParser = require("body-parser");
-var methodOverride = require('method-override');
-require('dotenv').config()
-
-var Sequelize = require('sequelize');
-
-var sequelize = new Sequelize(process.env.JAWSDB_URL,
-{
-  dialect: 'mysql',
-
-  pool: {
-    max: 5,
-    min: 0,
-    idle: 10000
-  }
-
-});// PATH PACKAGE
+var express = require('express');
 var path = require("path");
-
-
-// ========================================
-// STATING MY GLOBAL VARIABLES
-// ========================================
-
-// TURNING AN EXPRESS FUNCTION INTO THE VARIABLE APP
 var app = express();
 
-// SPECIFY WHICH PORT I AM GOING TO USE TO SET UP A CONNECTION
-var PORT = process.env.PORT || 4000;
 
-// ========================================
-// A SHORT SECTION TO INCORPORATE BODYPARSER INTO MY APP VARIABLE
-// ========================================
+var dotenv = require("dotenv");
+dotenv.load();
 
-// BodyParser makes it easy for our server to interpret data sent to it.
-// The code below is pretty standard.
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.text());
-app.use(bodyParser.json({ type: "application/vnd.api+json" }));
+app.set("port", process.env.PORT || 3000);
 
 
-// ========================================
-// ROUTER
-// The below points our server to a series of "route" files.
-// These routes give our server a "map" of how to respond when users visit or request data from various URLs.
-// ========================================
+app.use("/", express.static(path.join(__dirname, "public")));
 
-// WEB ROUTES
-// ========================================
-app.get('/', function(req, res){
-	res.send('ayo')
-});
+// Routes
+// =============================================================
+require("./routes/routes.js")(app);
 
-sequelize
-  .authenticate()
-  .then(function(err) {
-  	if (err) throw err;
-    console.log('Connection has been established successfully.');
-  })
-  .catch(function (err) {
-    console.log('Unable to connect to the database:', err);
-  });
-
-// API ROUTES
-// ========================================
-
-
-
-// ========================================
-// LISTENER
-// The below code effectively "starts" our server 
-// ========================================
-
-app.listen(PORT, function() {
-
-	console.log("APP LISTENING ON PORT: " + PORT);
-
-});
+app.listen(app.get("port"), function() {console.log("Hollaback on port: "+app.get("port"));});
