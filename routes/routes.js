@@ -28,11 +28,12 @@ module.exports = function(app) {
   app.use(bodyParser.text());
   app.use(bodyParser.json({type:"application/vnd.api+json"}));
 
-  app.get("/", function(req, res) {
-    res.render("index");
-  });
+  app.get('/', function(req, res){
+    Todo.findAll({}).then(function(results){
+      res.render('index', {task: results});
+    })
+  })
 
-  //app.get for testing
   app.post('/api/new', function(req, res){
     console.log(req.body)
     Todo.create({
@@ -47,6 +48,7 @@ module.exports = function(app) {
       res.json(results);
     })
   });
+
 
 
 
