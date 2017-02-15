@@ -6,6 +6,9 @@ var momentTimer = require('moment-timer');
 var moment = require('moment');
 var express = require('express');
 
+//Import SQL Todo schema
+var Todo = require('../models/todos.js');
+
 module.exports = function(app) {
 
   // Set handlebars
@@ -13,13 +16,6 @@ module.exports = function(app) {
   var hbs = exphbs.create({
     defaultLayout: "main"
   });
-// var timer = moment.duration(1, "seconds").timer({loop: true},function() {
-//   counter++;
-//   console.log(counter);
-//   if(counter == 5) {
-//     timer.stop();
-//   }
-// });
 
   HandlebarsIntl.registerWith(hbs.handlebars);
   app.engine("handlebars", hbs.engine);
@@ -35,4 +31,23 @@ module.exports = function(app) {
   app.get("/", function(req, res) {
     res.render("index");
   });
+
+  //app.get for testing
+  app.post('/api/new', function(req, res){
+    console.log(req.body)
+    Todo.create({
+      body: req.body.body,
+    }).then(function(results){
+      res.end();
+    })
+  });
+
+  app.get('/api', function(req, res){
+    Todo.findAll({}).then(function(results){
+      res.json(results);
+    })
+  });
+
+
+
 };

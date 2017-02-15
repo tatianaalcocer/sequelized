@@ -1,0 +1,85 @@
+<header>
+<h1>Pomodoro!</h1>
+</header>
+
+<br><br>
+
+<main>
+<<<<<<< HEAD
+      <div class="row">
+        <div class="col s12 m6">
+          <div class="card blue darken-1">
+            <div class="card-content white-text">
+              <span class="card-title" id="time"></span>
+              <div class="row">
+              <div id="stopwatch" data-timer="1500"></div>
+              </div>
+            </div>
+            <div class="card-action">
+              <div class="row">
+              <div class="col s6">
+              <a id="start-button" class="blue-text green accent-1 waves-effect waves-light btn">Start</a>
+              </div>
+              <div class="col s6">
+              <a id="restart-button" class="blue-text red accent-1 waves-effect waves-light btn">Restart</a>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+=======
+  {{!-- Input for todo item --}}
+  <div class="row">
+    <form class="col s12 m6">
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">mode_edit</i>
+          <input id="todoInput" placeholder="Todo item" class="materialize-textarea"></input>
+          <label for="icon_prefix2"></label>
+          <button id="todoSubmit" class="waves-effect waves-light btn">submit</button>          
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="row">
+    <div class="col s12 m6">
+      <div class="card blue darken-1">
+        <div class="card-content white-text">
+          <span class="card-title" id="time"></span>
+          <div class="row">
+          <div id="stopwatch" data-timer="1500"></div>
+          </div>
+        </div>
+        <div class="card-action">
+          <div class="row">
+          <div class="col s6">
+          <a id="start-button" class="blue-text green accent-1 waves-effect waves-light btn">Start</a>
+          </div>
+          <div class="col s6">
+          <a id="restart-button" class="blue-text red accent-1 waves-effect waves-light btn">Restart</a>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+>>>>>>> 74f83c8a374ef5b0a83f3ec120e6293488a20ba0
+</main>
+
+
+<footer class="page-footer white">
+
+</footer>
+
+<<<<<<< HEAD
+<script src="/js/init.js"></script>
+=======
+<script src="/js/init.js">
+  //path viewpoint: server.js?
+</script>
+<script src="/js/ajax.js"></script>
+>>>>>>> 74f83c8a374ef5b0a83f3ec120e6293488a20ba0

@@ -1,5 +1,6 @@
 (function($) {
   $(function() {
+  
   $("#stopwatch").TimeCircles({
     time: {
       Days: {show: false},

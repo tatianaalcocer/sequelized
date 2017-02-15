@@ -6,7 +6,7 @@ var app = express();
 var dotenv = require("dotenv");
 dotenv.load();
 
-app.set("port", process.env.PORT || 8080);
+app.set("port", process.env.PORT || 3000);
 
 
 app.use("/", express.static(path.join(__dirname, "public")));

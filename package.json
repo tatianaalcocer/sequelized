@@ -21,6 +21,7 @@
   "homepage": "https://github.com/Icarusoncloud9/sequelized#readme",
   "dependencies": {
     "body-parser": "^1.16.0",
+    "dotenv": "^4.0.0",
     "express": "^4.14.1",
     "express-handlebars": "^3.0.0",
     "handlebars-intl": "^1.1.2",
@@ -29,7 +30,7 @@
     "moment-timer": "^1.1.5",
     "mysql": "^2.13.0",
     "path": "^0.12.7",
-    "sequelize": "^3.30.0"
+    "sequelize": "^3.30.2"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"

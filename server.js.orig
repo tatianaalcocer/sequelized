@@ -1,0 +1,22 @@
+var express = require('express');
+var path = require("path");
+var app = express();
+
+
+var dotenv = require("dotenv");
+dotenv.load();
+
+<<<<<<< HEAD
+app.set("port", process.env.PORT || 8080);
+=======
+app.set("port", process.env.PORT || 3000);
+>>>>>>> 74f83c8a374ef5b0a83f3ec120e6293488a20ba0
+
+
+app.use("/", express.static(path.join(__dirname, "public")));
+
+// Routes
+// =============================================================
+require("./routes/routes.js")(app);
+
+app.listen(app.get("port"), function() {console.log("Hollaback on port: "+app.get("port"));});
