@@ -1,6 +1,9 @@
 (function($) {
   $(function() {
+<<<<<<< HEAD
+=======
   
+>>>>>>> 74f83c8a374ef5b0a83f3ec120e6293488a20ba0
   $("#stopwatch").TimeCircles({
     time: {
       Days: {show: false},
@@ -53,10 +56,6 @@
     }
     // counter = 1500000;
     // $('#time').text(moment(counter).format("mm:ss.SSS"));
-  });
-
-  $('#done-button').on('click', function() {
-    // Post done data to db.
   });
 
   }); // end of document ready
