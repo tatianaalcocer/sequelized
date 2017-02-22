@@ -30,25 +30,44 @@ module.exports = function(app) {
 
   app.get('/', function(req, res){
     Todo.findAll({}).then(function(results){
-      res.render('index', {task: results});
-    })
-  })
+      res.render('index',
+        {
+          task: results
+        });
+    });
+  });
 
   app.post('/api/new', function(req, res){
-    console.log(req.body)
     Todo.create({
       body: req.body.body,
     }).then(function(results){
       res.end();
-    })
+    });
   });
 
   app.get('/api', function(req, res){
     Todo.findAll({}).then(function(results){
       res.json(results);
-    })
+    });
   });
 
+  app.post('/task', function(req, res){
+    console.log(req.body.taskID);
+    var taskInstance = {
+      taskID: req.body.taskID,
+      taskStart: new Date(),
+      taskEnd: null
+    };
+
+    Todo.findAll({}).then(function(results){
+      res.render('index',
+        {
+          task: results,
+          currentTask: taskInstance
+        });
+    });
+
+  });
 
 
 

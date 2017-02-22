@@ -55,5 +55,9 @@
     // $('#time').text(moment(counter).format("mm:ss.SSS"));
   });
 
+  $('#done-button').on('click', function() {
+    // Post done data to db.
+  });
+
   }); // end of document ready
 })(jQuery); // end of jQuery name space
