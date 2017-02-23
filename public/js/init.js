@@ -1,15 +1,15 @@
 (function($) {
   $(function() {
   
-  $("#stopwatch").TimeCircles({
+  var timer = $("#stopwatch").TimeCircles({
     time: {
       Days: {show: false},
       Hours: {show: false}
     },
     // start: false 
   });    
-  $('#stopwatch').TimeCircles().restart();
-  $('#stopwatch').TimeCircles().stop();
+  timer.restart();
+  timer.stop();
     // var counter = 1500000;
     // $('#time').text(moment(counter).format("mm:ss.SSS"));
   // var timer = moment.duration(1, "milliseconds").timer({
@@ -26,11 +26,11 @@
   $('#start-button').on('click', function() {
     if(!started) {
       $('#start-button').text('Pause');
-      $('#stopwatch').TimeCircles().start();
+      timer.start();
       started = true; 
     } else {
       $('#start-button').text('Start');
-      $('#stopwatch').TimeCircles().stop();
+      timer.stop();
       started = false;
     }
     // if($('#start-button').text() === 'Start') {
@@ -45,8 +45,8 @@
     // }
   });
   $('#restart-button').on('click', function() {
-    $('#stopwatch').TimeCircles().restart();
-    $('#stopwatch').TimeCircles().stop();
+    timer.restart();
+    timer.stop();
     if(started) {
       $('#start-button').text('Start');      
       started = false;
@@ -57,6 +57,10 @@
 
   $('#done-button').on('click', function() {
     // Post done data to db.
+    var timeRemaining = timer.getTime();
+    var currentTaskID = $('.stopwatch-container').attr('id');
+    console.log(currentTaskID);
+    timer.stop();
   });
 
   }); // end of document ready

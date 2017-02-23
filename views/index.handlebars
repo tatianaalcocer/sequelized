@@ -7,19 +7,19 @@
 <main>
   {{!-- Input for todo item --}}
   <div class="row">
-    <form class="col s12 m6">
+    <form class="col s12 m6" method="POST" action="/api/new?_method=POST">
       <div class="row">
         <div class="input-field col s6">
           <i class="material-icons prefix">mode_edit</i>
-          <input id="todoInput" placeholder="Todo item" class="materialize-textarea"></input>
+          <input name="todo" id="todoInput" placeholder="Todo item" class="materialize-textarea"></input>
           <label for="icon_prefix2"></label>
-          <button id="todoSubmit" class="waves-effect waves-light btn">submit</button>          
+          <button type="submit" id="todoSubmit" class="waves-effect waves-light btn">submit</button>          
         </div>
       </div>
     </form>
   </div>
 {{#if currentTask}}
-  <div id="{{currentTask.taskID}}" class="row">
+  <div class="row stopwatch-container" id="{{currentTask.taskID}}">
     <div class="col s12 m6">
       <div class="card blue darken-1">
         <div class="card-content white-text">

@@ -38,10 +38,11 @@ module.exports = function(app) {
   });
 
   app.post('/api/new', function(req, res){
+    var todo = req.body.todo;
     Todo.create({
-      body: req.body.body,
+      body: todo,
     }).then(function(results){
-      res.end();
+      res.redirect('/');
     });
   });
 
@@ -52,7 +53,7 @@ module.exports = function(app) {
   });
 
   app.post('/task', function(req, res){
-    console.log(req.body.taskID);
+    // console.log(req.body.taskID);
     var taskInstance = {
       taskID: req.body.taskID,
       taskStart: new Date(),
